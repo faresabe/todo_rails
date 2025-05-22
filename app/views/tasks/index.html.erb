@@ -1,16 +1,16 @@
-<h1><%= time_based_greeting %>, <%= current_user.name %>!</h1>
-<h2>Your Tasks</h2>
+<p style="color: red"><%= notice %></p>
 
-<%= link_to "New Task", new_task_path %>
+<% content_for :title, "Tasks" %>
+
+<h1>Tasks</h1>
 
 <div id="tasks">
   <% @tasks.each do |task| %>
-    <div class="task <%= 'completed' if task.completed %>">
-      <%= check_box_tag :completed, task.id, task.completed, 
-            data: { reflex: "click->Task#toggle", id: task.id } %>
-      <%= link_to task.title, task %>
-      <%= link_to "Edit", edit_task_path(task) %>
-      <%= link_to "Delete", task, method: :delete, data: { confirm: "Are you sure?" } %>
-    </div>
+    <%= render task %>
+    <p>
+      <%= link_to "Show this task", task %>
+    </p>
   <% end %>
 </div>
+
+<%= link_to "New task", new_task_path %>
