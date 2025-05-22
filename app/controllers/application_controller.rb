@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  helper_method :current_user, :logged_in?  
+
   private
 
   def current_user
@@ -14,6 +16,6 @@ class ApplicationController < ActionController::Base
       redirect_to login_path, alert: "You must be logged in to access this page."
     end
   end 
-  
+
   allow_browser versions: :modern
 end

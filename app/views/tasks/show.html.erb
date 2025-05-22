@@ -1,0 +1,10 @@
+<h1>Task Details</h1>
+
+<div class="task <%= 'completed' if @task.completed %>">
+  <h2><%= @task.title %></h2>
+  <p>Status: <%= @task.completed ? 'Completed' : 'Pending' %></p>
+  <p>Created: <%= time_ago_in_words(@task.created_at) %> ago</p>
+</div>
+
+<%= link_to "Edit", edit_task_path(@task) %> |
+<%= link_to "Back to tasks", tasks_path %>
